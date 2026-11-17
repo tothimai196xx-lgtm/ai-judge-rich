@@ -1,20 +1,19 @@
-# ai-judge-rich-01 entry (Python 3.13, standard library only).
-# Writes one fixed plan to /output/entry.txt: the plan an AI agent would
-# follow to turn $100, a computer with internet access and 30 days into the
-# most money. Deterministic: fixed string, no random/time/network. The gate
-# takes UTF-8 text of 1 to 1,000 characters that is not only white space.
+# Round 2 rewrite: ai-judge-rich-01 entry (Python 3.13, standard library only).
+# Writes one fixed 30-day plan to /output/entry.txt. Deterministic: no network,
+# no randomness, no clock. Local check: mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 
 import os
 
 OUTPUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
 
-PLAN = """Sell live one-page booking sites to US home-service firms (plumbers, roofers, HVAC) with 20+ Google reviews but no working website — one booked job ($300-5,000) repays it many times.
-Day 1: set up a Stripe payment link and a free Vercel demo hub; pull 200 targets from Google Maps.
-Days 2-9: build each firm a live site from its own listing, photos, reviews and service area, and email the owner the link: 25 a day, 200 total.
-Price: $149 to keep it on their domain, $19/month hosting and updates.
-Days 10-30: transfer paid sites, upsell GBP cleanup for $49, keep building 10 a day from free Maps.
-Budget: $9 domain, $21 Hunter/Apollo credits, $70 reserve for Stripe fees and refunds; $0 on ads.
-Expect 200 sent, 5% reply, 40% of replies buy: 4 sales, $596 plus $76/month, likely holding ~$650 on day 30. If under 2 replies per 50 by day 9, switch to dentists; if 0 sales by day 18, cut price to $99; stop if $30 tools bring no sale by day 9."""
+PLAN = """Sell a $149 online-booking page to independent dental clinics in one US city that still take bookings only by phone.
+Days 1-2: build one reusable booking-page template with an online calendar, SMS reminders and a pay link; list 300 clinics from public Google Maps listings with no online booking.
+Days 3-22: send 25 short cold emails a day (500 total) from a template personalised with each clinic's name and one missing feature; each email links the live demo and a 10-minute setup call.
+Expect 3% replies (15) and close 20% of replies: 3 sales x $149 = $447.
+Days 4-30: build each sold page from the template in under a day, collect a review, and ask each buyer to refer one other clinic.
+Budget $100, $0 ads: $40 domain and hosting, $35 cold-email tool for one month, $25 payment fees.
+If under 5 replies by day 10, switch the same template to local gyms; if 0 sales by day 20, cut price to $99; stop spending at $100 and finish with free tools.
+Keep $447 - $100 = $347 on day 30."""
 
 with open(os.path.join(OUTPUT_DIR, "entry.txt"), "wb") as f:
     f.write(PLAN.encode("utf-8"))
